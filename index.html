@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arknights Viewer</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>Arknights Viewer</h1>
+            <div class="header-actions">
+                <button id="import-button">データインポート</button>
+                <div id="share-container" class="share-container hidden">
+                    <input type="text" id="share-url" readonly>
+                    <button id="copy-button">コピー</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- テーブル表示エリア -->
+            <div class="table-container">
+                <table id="operators-table">
+                    <thead>
+                        <tr>
+                            <th>コード</th>
+                            <th>オペレータ名</th>
+                            <th>潜在</th>
+                            <th>昇進</th>
+                            <th>レベル</th>
+                            <th>スキル</th>
+                            <th>S1特化</th>
+                            <th>S2特化</th>
+                            <th>S3特化</th>
+                            <th>モジュールX</th>
+                            <th>モジュールY</th>
+                            <th>モジュールD</th>
+                            <th>モジュールA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="operators-body">
+                        <!-- JavaScriptで動的に生成 -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Arknights Viewer</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-functions.js"></script>
+    
+    <!-- アプリケーションスクリプト -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

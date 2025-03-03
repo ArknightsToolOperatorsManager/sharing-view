@@ -1,0 +1,208 @@
+﻿/* main.css */
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #252525;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --accent-color: #0078d7;
+    --border-color: #444;
+    --table-header-bg: #333;
+    --table-row-even: #2a2a2a;
+    --table-row-odd: #252525;
+    --table-border: #555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#app {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダースタイル */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: var(--accent-color);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* ダイアログスタイル */
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.dialog h2 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+#import-data {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* 共有リンクスタイル */
+.share-container {
+    display: flex;
+    max-width: 400px;
+}
+
+#share-url {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px 0 0 4px;
+}
+
+#copy-button {
+    border-radius: 0 4px 4px 0;
+}
+
+/* テーブルスタイル */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+#operators-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--table-border);
+}
+
+#operators-table th,
+#operators-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--table-border);
+}
+
+#operators-table th {
+    background-color: var(--table-header-bg);
+    font-weight: bold;
+    color: var(--text-primary);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#operators-table .subheader th {
+    top: 41px; /* ヘッダーの高さに合わせて調整 */
+    background-color: var(--table-header-bg);
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+#operators-table tbody tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+#operators-table tbody tr:nth-child(odd) {
+    background-color: var(--table-row-odd);
+}
+
+#operators-table tbody tr:hover {
+    background-color: rgba(0, 120, 215, 0.1);
+}
+
+/* フッタースタイル */
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header-actions {
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .share-container {
+        width: 100%;
+    }
+}
