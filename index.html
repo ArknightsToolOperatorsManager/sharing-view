@@ -11,13 +11,23 @@
         <header class="header">
             <h1>Arknights Viewer</h1>
             <div class="header-actions">
-                <button id="import-button">データインポート</button>
-                <div id="share-container" class="share-container hidden">
-                    <input type="text" id="share-url" readonly>
-                    <button id="copy-button">コピー</button>
+                <div class="share-buttons">
+                    <button id="copy-url-button">URLをコピー</button>
+                    <button id="copy-tweet-button">Xツイート用テキストをコピー</button>
                 </div>
             </div>
         </header>
+
+        <!-- データ入力エリア -->
+        <div class="input-area">
+            <h2>データ入力</h2>
+            <form id="import-form">
+                <textarea id="import-data" placeholder="JSONデータを貼り付けてください"></textarea>
+                <div class="button-group">
+                    <button type="submit">表示</button>
+                </div>
+            </form>
+        </div>
 
         <main>
             <!-- テーブル表示エリア -->

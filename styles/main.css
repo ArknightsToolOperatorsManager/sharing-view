@@ -55,6 +55,11 @@ body {
     gap: 10px;
 }
 
+.share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
 button {
     padding: 8px 15px;
     background-color: var(--accent-color);
@@ -69,36 +74,23 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* ダイアログスタイル */
-.dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.dialog-content {
-    background-color: var(--bg-secondary);
+/* データ入力エリア */
+.input-area {
+    margin-bottom: 30px;
     padding: 20px;
+    background-color: var(--bg-secondary);
     border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
+    border: 1px solid var(--border-color);
 }
 
-.dialog h2 {
-    margin-bottom: 20px;
+.input-area h2 {
+    margin-bottom: 15px;
     color: var(--accent-color);
 }
 
 #import-data {
     width: 100%;
-    height: 200px;
+    height: 150px;
     padding: 10px;
     margin-bottom: 15px;
     background-color: var(--bg-primary);
@@ -114,23 +106,21 @@ button:hover {
     gap: 10px;
 }
 
-/* 共有リンクスタイル */
-.share-container {
-    display: flex;
-    max-width: 400px;
+/* ツイート用ボタン */
+#copy-tweet-button {
+    background-color: #1DA1F2; /* Xの青色 */
 }
 
-#share-url {
-    flex-grow: 1;
-    padding: 8px;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    border-radius: 4px 0 0 4px;
+#copy-tweet-button:hover {
+    background-color: #0c85d0;
 }
 
-#copy-button {
-    border-radius: 0 4px 4px 0;
+#copy-url-button {
+    background-color: #28a745; /* 緑色 */
+}
+
+#copy-url-button:hover {
+    background-color: #218838;
 }
 
 /* テーブルスタイル */
