@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // キャラクター静的データを読み込む関数
     async function loadCharacterData() {
         try {
-            const response = await fetch('data/characters.json');
+            const response = await fetch('data/operators.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
