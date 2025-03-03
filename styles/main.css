@@ -131,6 +131,27 @@ body {
     gap: 10px;
 }
 
+.language-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.language-selector label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.language-selector label:hover {
+    color: var(--text-primary);
+}
+
+.language-selector input[type="radio"] {
+    margin-right: 5px;
+}
+
 button {
     padding: 8px 15px;
     background-color: var(--accent-color);

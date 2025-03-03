@@ -1,228 +1,95 @@
-﻿// 全オペレーターを表示する関数
-function displayAllOperators() {
-    // テーブルの内容をクリア
-    allOperatorsBody.innerHTML = '';
-    
-    // キャラクターコードでソート
-    const sortedOperators = Object.keys(characterData).sort();
-    
-    // 各オペレーターの行を生成
-    sortedOperators.forEach(code => {
-        const operator = characterData[code];
-        const tr = document.createElement('tr');
-        
-        // インポートデータに存在する場合、クラスを追加
-        const importedData = findOperatorData(code);
-        if (importedData) {
-            tr.classList.add('has-data');
-        }
-        
-        // コード
-        const tdCode = document.createElement('td');
-        tdCode.textContent = code;
-        tr.appendChild(tdCode);
-        
-        // オペレータ名
-        const tdName = document.createElement('td');
-        tdName.textContent = operator.name;
-        tdName.classList.add(`rarity-${operator.rarity}`);
-        tr.appendChild(tdName);
-        
-        // レアリティ
-        const tdRarity = document.createElement('td');
-        tdRarity.textContent = '★'.repeat(operator.rarity);
-        tdRarity.classList.add(`rarity-${operator.rarity}`);
-        tr.appendChild(tdRarity);
-        
-        // クラス
-        const tdClass = document.createElement('td');
-        tdClass.textContent = getClassNameJapanese(operator.class);
-        tr.appendChild(tdClass);
-        
-        // 以下、インポートデータがある場合はその値を表示、なければ空欄または初期値
-        
-        // 潜在
-        const tdPotential = document.createElement('td');
-        tdPotential.textContent = importedData ? importedData.potential : '';
-        tr.appendChild(tdPotential);
-        
-        // 昇進
-        const tdElite = document.createElement('td');
-        tdElite.textContent = importedData ? importedData.elite : '';
-        tr.appendChild(tdElite);
-        
-        // レベル
-        const tdLevel = document.createElement('td');
-        tdLevel.textContent = importedData ? importedData.level : '';
-        tr.appendChild(tdLevel);
-        
-        // スキル
-        const tdSkill = document.createElement('td');
-        tdSkill.textContent = importedData ? importedData.skill : '';
-        tr.appendChild(tdSkill);
-        
-        // スキル1特化
-        const tdSkill1 = document.createElement('td');
-        tdSkill1.textContent = importedData ? importedData.skill1 : '';
-        tr.appendChild(tdSkill1);
-        
-        // スキル2特化
-        const tdSkill2 = document.createElement('td');
-        tdSkill2.textContent = importedData ? importedData.skill2 : '';
-        tr.appendChild(tdSkill2);
-        
-        // スキル3特化
-        const tdSkill3 = document.createElement('td');
-        tdSkill3.textContent = importedData ? importedData.skill3 : '';
-        tr.appendChild(tdSkill3);
-        
-        // モジュールX
-        const tdModuleX = document.createElement('td');
-        tdModuleX.textContent = importedData ? importedData.moduleX : '';
-        tr.appendChild(tdModuleX);
-        
-        // モジュールY
-        const tdModuleY = document.createElement('td');
-        tdModuleY.textContent = importedData ? importedData.moduleY : '';
-        tr.appendChild(tdModuleY);
-        
-        // モジュールD
-        const tdModuleD = document.createElement('td');
-        tdModuleD.textContent = importedData ? importedData.moduleD : '';
-        tr.appendChild(tdModuleD);
-        
-        // モジュールA
-        const tdModuleA = document.createElement('td');
-        tdModuleA.textContent = importedData ? importedData.moduleA : '';
-        tr.appendChild(tdModuleA);
-        
-        // 行をテーブルに追加
-        allOperatorsBody.appendChild(tr);
-    });
-}
+﻿// main.js - メイン機能
+// 言語設定
+let currentLanguage = 'jp'; // デフォルトは日本語
 
-// コードを元にインポートデータを検索する関数
-function findOperatorData(code) {
-    return importedOperators.find(op => op.code === code);
-}
-
-// クラス名を日本語に変換する関数
-function getClassNameJapanese(className) {
-    const classMap = {
-        'guard': '前衛',
-        'vanguard': '先鋒',
-        'defender': '重装',
-        'sniper': '狙撃',
-        'caster': '術師',
-        'medic': '医療',
-        'supporter': '補助',
-        'specialist': '特殊'
-    };
-    
-    return classMap[className] || className;
-}// main.js - メイン機能
 document.addEventListener('DOMContentLoaded', () => {
-// 各種DOM要素の取得
-const copyUrlButton = document.getElementById('copy-url-button');
-const tweetButton = document.getElementById('tweet-button');
+    // 各種DOM要素の取得
+    const copyUrlButton = document.getElementById('copy-url-button');
+    const tweetButton = document.getElementById('tweet-button');
+    const operatorsBody = document.getElementById('operators-body');
 
-// タブボタンの取得
-const tabImported = document.getElementById('tab-imported');
-const tabAll = document.getElementById('tab-all');
-const importedDataContainer = document.getElementById('imported-data');
-const allOperatorsContainer = document.getElementById('all-operators');
+    // インポートされたオペレーターデータ
+    let importedOperators = [];
 
-// 各テーブルのbody要素
-const operatorsBody = document.getElementById('operators-body');
-const allOperatorsBody = document.getElementById('all-operators-body');
+    // キャラクター静的データ
+    let characterData = {};
 
-// インポートされたオペレーターデータ
-let importedOperators = [];
+    // 現在のデータID
+    let currentDataId = null;
 
-// キャラクター静的データ
-let characterData = {};
+    // URLからデータIDを取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const dataId = urlParams.get('d');
 
-// 現在のデータID
-let currentDataId = null;
-
-// URLからデータIDを取得
-const urlParams = new URLSearchParams(window.location.search);
-const dataId = urlParams.get('d');
-
-// 静的データの読み込み
-loadCharacterData()
-    .then(data => {
-        characterData = data;
-        
-        // 全オペレーターリストの表示
-        displayAllOperators();
-        
-        // URLにデータIDがある場合、Firestoreからデータを取得して表示
-        if (dataId) {
-            currentDataId = dataId;
-            return fetchOperatorData(dataId);
-        }
-    })
-    .then(operatorData => {
-        if (operatorData) {
-            importedOperators = operatorData;
-            displayOperators(operatorData);
-        }
-    })
-    .catch(error => {
-        console.error('初期化エラー:', error);
+    // 言語選択ラジオボタンのイベントリスナー
+    document.querySelectorAll('input[name="language"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            currentLanguage = e.target.value;
+            
+            // 言語変更時にテーブルを再描画
+            if (importedOperators.length > 0) {
+                displayOperators(importedOperators);
+            }
+        });
     });
-    
-// タブ切り替えのイベントリスナー
-tabImported.addEventListener('click', () => {
-    tabImported.classList.add('active');
-    tabAll.classList.remove('active');
-    importedDataContainer.classList.remove('hidden');
-    allOperatorsContainer.classList.add('hidden');
-});
 
-tabAll.addEventListener('click', () => {
-    tabAll.classList.add('active');
-    tabImported.classList.remove('active');
-    allOperatorsContainer.classList.remove('hidden');
-    importedDataContainer.classList.add('hidden');
-});
+    // 静的データの読み込み
+    loadCharacterData()
+        .then(data => {
+            characterData = data;
+            
+            // URLにデータIDがある場合、Firestoreからデータを取得して表示
+            if (dataId) {
+                currentDataId = dataId;
+                return fetchOperatorData(dataId);
+            }
+        })
+        .then(operatorData => {
+            if (operatorData) {
+                importedOperators = operatorData;
+                displayOperators(operatorData);
+            }
+        })
+        .catch(error => {
+            console.error('初期化エラー:', error);
+        });
 
-// URLコピーボタンのイベントリスナー
-copyUrlButton.addEventListener('click', () => {
-    if (!currentDataId) {
-        alert('表示するデータがありません。');
-        return;
-    }
-    
-    const url = `${window.location.origin}${window.location.pathname}?d=${currentDataId}`;
-    copyToClipboard(url);
-    
-    // ボタンのテキストを一時的に変更
-    const originalText = copyUrlButton.textContent;
-    copyUrlButton.textContent = 'コピーしました！';
-    setTimeout(() => {
-        copyUrlButton.textContent = originalText;
-    }, 2000);
-});
+    // URLコピーボタンのイベントリスナー
+    copyUrlButton.addEventListener('click', () => {
+        if (!currentDataId) {
+            alert('表示するデータがありません。');
+            return;
+        }
+        
+        const url = `${window.location.origin}${window.location.pathname}?d=${currentDataId}`;
+        copyToClipboard(url);
+        
+        // ボタンのテキストを一時的に変更
+        const originalText = copyUrlButton.textContent;
+        copyUrlButton.textContent = 'コピーしました！';
+        setTimeout(() => {
+            copyUrlButton.textContent = originalText;
+        }, 2000);
+    });
 
-// Xツイートボタンのイベントリスナー
-tweetButton.addEventListener('click', () => {
-    if (!currentDataId) {
-        alert('表示するデータがありません。');
-        return;
-    }
-    
-    // オペレーター数を取得
-    const operatorCount = document.querySelectorAll('#operators-body tr').length;
-    
-    // ツイート用テキストとURLを生成
-    const shareUrl = `${window.location.origin}${window.location.pathname}?d=${currentDataId}`;
-    const tweetText = `私のオペレーターの育成状況を共有します！ ${url} #Arknights #アークナイツ #ANManager`;
-    
-    // Xの投稿画面を開く（ポップアップ）
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
+    // Xツイートボタンのイベントリスナー
+    tweetButton.addEventListener('click', () => {
+        if (!currentDataId) {
+            alert('表示するデータがありません。');
+            return;
+        }
+        
+        // オペレーター数を取得
+        const operatorCount = document.querySelectorAll('#operators-body tr').length;
+        
+        // ツイート用テキストとURLを生成
+        const shareUrl = `${window.location.origin}${window.location.pathname}?d=${currentDataId}`;
+        const tweetText = `私のオペレーターの育成状況を共有します！ ${url} #Arknights #アークナイツ #ANManager`;
+        
+        // Xの投稿画面を開く（ポップアップ）
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
+        window.open(twitterUrl, '_blank', 'width=550,height=420');
+    });
 });
 
 // クリップボードにコピーする関数
@@ -319,6 +186,7 @@ function processInputData(data) {
 // オペレーターデータをテーブルに表示する関数
 function displayOperators(operators) {
     // テーブルの内容をクリア
+    const operatorsBody = document.getElementById('operators-body');
     operatorsBody.innerHTML = '';
     
     // 各オペレーターの行を生成
@@ -326,16 +194,25 @@ function displayOperators(operators) {
         const tr = document.createElement('tr');
         
         // キャラクター基本情報を取得
-        const charInfo = characterData[operator.code] || { name: 'Unknown' };
+        const charInfo = characterData[operator.code] || { name: { jp: 'Unknown', en: 'Unknown', ch: 'Unknown' } };
         
         // コード
         const tdCode = document.createElement('td');
         tdCode.textContent = operator.code;
         tr.appendChild(tdCode);
         
-        // オペレータ名
+        // オペレータ名 - 現在選択されている言語で表示
         const tdName = document.createElement('td');
-        tdName.textContent = charInfo.name || operator.code;
+        tdName.textContent = getOperatorName(charInfo);
+        
+        // レアリティに基づいてクラスを追加（例：☆6 → rarity-6）
+        if (charInfo.rarity) {
+            const rarityNum = charInfo.rarity.replace(/\D/g, '');
+            if (rarityNum) {
+                tdName.classList.add(`rarity-${rarityNum}`);
+            }
+        }
+        
         tr.appendChild(tdName);
         
         // 潜在
@@ -397,4 +274,20 @@ function displayOperators(operators) {
         operatorsBody.appendChild(tr);
     });
 }
-});
+
+// コードを元にインポートデータを検索する関数
+function findOperatorData(code) {
+    return importedOperators.find(op => op.code === code);
+}
+
+// オペレーター名を現在の言語に基づいて取得する関数
+function getOperatorName(operatorData) {
+    if (!operatorData || !operatorData.name) return 'Unknown';
+    
+    // 選択された言語で名前を返す
+    return operatorData.name[currentLanguage] || 
+           operatorData.name.jp || 
+           operatorData.name.en || 
+           operatorData.name.ch || 
+           'Unknown';
+}
