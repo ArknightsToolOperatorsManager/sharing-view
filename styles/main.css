@@ -1,4 +1,75 @@
-﻿/* main.css */
+﻿/* タブスタイル */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+    background-color: transparent;
+}
+
+.tab-button.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    background-color: transparent;
+}
+
+/* テーブルスタイル - レアリティ別の色 */
+.rarity-6 {
+    color: #FF8A00; /* 6星 - オレンジ */
+}
+
+.rarity-5 {
+    color: #FFEE00; /* 5星 - イエロー */
+}
+
+.rarity-4 {
+    color: #C932FF; /* 4星 - パープル */
+}
+
+.rarity-3 {
+    color: #45A6FF; /* 3星 - ブルー */
+}
+
+.rarity-2, .rarity-1 {
+    color: #A0A0A0; /* 2星、1星 - グレー */
+}
+
+/* オペレーターのステータスがある行 */
+tr.has-data {
+    background-color: rgba(0, 120, 215, 0.15) !important;
+}
+
+/* 全オペレーターテーブルのフィルタエリア */
+.filter-area {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.filter-area select {
+    padding: 8px;
+    margin-right: 10px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}/* main.css */
 :root {
     --bg-primary: #1a1a1a;
     --bg-secondary: #252525;
@@ -74,44 +145,25 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* データ入力エリア */
+/* データ入力エリア関連のスタイルを削除 */
 .input-area {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.input-area h2 {
-    margin-bottom: 15px;
-    color: var(--accent-color);
+    display: none; /* もう使用しないため非表示に */
 }
 
 #import-data {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    border-radius: 4px;
-    resize: vertical;
+    display: none; /* もう使用しないため非表示に */
 }
 
 .button-group {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    display: none; /* もう使用しないため非表示に */
 }
 
-/* ツイート用ボタン */
-#copy-tweet-button {
+/* ツイートボタン */
+#tweet-button {
     background-color: #1DA1F2; /* Xの青色 */
 }
 
-#copy-tweet-button:hover {
+#tweet-button:hover {
     background-color: #0c85d0;
 }
 
