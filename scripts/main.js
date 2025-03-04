@@ -1,5 +1,16 @@
 ﻿// main.js - メイン機能
 // 言語設定
+
+// インポートされたオペレーターデータ
+let importedOperators = [];
+
+// キャラクター静的データ
+let characterData = {};
+
+// 現在のデータID
+let currentDataId = null;
+
+// 選択中の言語
 let currentLanguage = 'jp'; // デフォルトは日本語
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,14 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tweetButton = document.getElementById('tweet-button');
     const operatorsBody = document.getElementById('operators-body');
 
-    // インポートされたオペレーターデータ
-    let importedOperators = [];
-
-    // キャラクター静的データ
-    let characterData = {};
-
-    // 現在のデータID
-    let currentDataId = null;
 
     // URLからデータIDを取得
     const urlParams = new URLSearchParams(window.location.search);
