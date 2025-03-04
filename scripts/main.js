@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             characterData = data;
             
-            // URLにデータIDがある場合、Firestoreからデータを取得して表示
+            // URLにデータIDがある場合、APIからデータを取得して表示
             if (dataId) {
                 currentDataId = dataId;
                 return fetchOperatorData(dataId);
@@ -52,6 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('初期化エラー:', error);
+            // エラーの表示
+            const operatorsBody = document.getElementById('operators-body');
+            const errorRow = document.createElement('tr');
+            const errorCell = document.createElement('td');
+            errorCell.colSpan = 13; // テーブルの列数に合わせる
+            errorCell.textContent = 'データの読み込みに失敗しました。';
+            errorCell.style.textAlign = 'center';
+            errorCell.style.padding = '20px';
+            errorCell.style.color = 'red';
+            errorRow.appendChild(errorCell);
+            operatorsBody.appendChild(errorRow);
         });
 
     // URLコピーボタンのイベントリスナー
@@ -84,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // ツイート用テキストとURLを生成
         const shareUrl = `${window.location.origin}${window.location.pathname}?d=${currentDataId}`;
-        const tweetText = `私のオペレーターの育成状況を共有します！ ${url} #Arknights #アークナイツ #ANManager`;
+        const tweetText = `私のオペレーターの育成状況を共有します！ ${shareUrl} #Arknights #アークナイツ #ANManager`;
         
         // Xの投稿画面を開く（ポップアップ）
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
         window.open(twitterUrl, '_blank', 'width=550,height=420');
     });
 });
@@ -273,11 +284,6 @@ function displayOperators(operators) {
         // 行をテーブルに追加
         operatorsBody.appendChild(tr);
     });
-}
-
-// コードを元にインポートデータを検索する関数
-function findOperatorData(code) {
-    return importedOperators.find(op => op.code === code);
 }
 
 // オペレーター名を現在の言語に基づいて取得する関数

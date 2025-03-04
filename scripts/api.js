@@ -1,27 +1,16 @@
-﻿// Firebaseとの連携
-// Firestoreにデータを保存する関数
-async function saveOperatorData(operators) {
-    try {
-        // Cloud Functionsを呼び出してデータを保存し、短いIDを生成
-        const saveFunction = firebase.functions().httpsCallable('saveCharacterData');
-        const result = await saveFunction({ data: operators });
-        
-        return result.data;
-    } catch (error) {
-        console.error('データ保存エラー:', error);
-        throw error;
-    }
-}
-
-// Firestoreからデータを取得する関数
+﻿// HTTP APIを使用してデータを取得する関数
 async function fetchOperatorData(dataId) {
     try {
-        // Cloud Functionsを呼び出してデータを取得
-        const fetchFunction = firebase.functions().httpsCallable('getCharacterData');
-        const result = await fetchFunction({ id: dataId });
+        const response = await fetch(`https://us-central1-arknights-sharing-view.cloudfunctions.net/getCharacterDataHttp?id=${dataId}`);
         
-        if (result.data && result.data.characters) {
-            return result.data.characters;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data && data.characters) {
+            return data.characters;
         } else {
             throw new Error('データが見つかりませんでした');
         }
