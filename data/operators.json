@@ -801,7 +801,7 @@
   },
   "SR04": {
     "name": {
-      "jp": "荒廃ラップランド",
+      "jp": "荒蕪ラップランド",
       "en": "Lappland T.D.",
       "ch": "荒芜拉普兰德"
     },
@@ -809,7 +809,7 @@
   },
   "SR40": {
     "name": {
-      "jp": "ヴァルピスフォーリア",
+      "jp": "ウルピスフォリア",
       "en": "Vulpisfoglia",
       "ch": "忍冬"
     },
@@ -852,6 +852,54 @@
       "jp": "エンテレケイア",
       "en": "Entelechia",
       "ch": "隐德来希"
+    },
+    "rarity": "☆6"
+  },
+  "DB01": {
+    "name": {
+      "jp": "ネクラス",
+      "en": "Necrass",
+      "ch": "死芒"
+    },
+    "rarity": "☆6"
+  },
+  "R003": {
+    "name": {
+      "jp": "Mon3tr",
+      "en": "Mon3tr",
+      "ch": "Mon3tr"
+    },
+    "rarity": "☆6"
+  },
+  "PL08": {
+    "name": {
+      "jp": "新約エクシア",
+      "en": "Exusiai N.C.",
+      "ch": "新约能天使"
+    },
+    "rarity": "☆6"
+  },
+  "LT17": {
+    "name": {
+      "jp": "レミュアン",
+      "en": "Lemuen",
+      "ch": "蕾缪安"
+    },
+    "rarity": "☆6"
+  },
+  "LT32": {
+    "name": {
+      "jp": "サンクタミキサー",
+      "en": "Sankta Miksaparato",
+      "ch": "信仰搅拌机"
+    },
+    "rarity": "☆6"
+  },
+  "CT01": {
+    "name": {
+      "jp": "トラゴディア",
+      "en": "Tragodia",
+      "ch": "酒神"
     },
     "rarity": "☆6"
   },
@@ -2129,7 +2177,7 @@
   },
   "CB32": {
     "name": {
-      "jp": "ボビン",
+      "jp": "ボビング",
       "en": "Bobbing",
       "ch": "波卜"
     },
@@ -2188,6 +2236,54 @@
       "jp": "ノウエル",
       "en": "Nowell",
       "ch": "诺威尔"
+    },
+    "rarity": "☆5"
+  },
+  "SG27": {
+    "name": {
+      "jp": "ウルフェナイト",
+      "en": "Wulfenite",
+      "ch": "钼铅"
+    },
+    "rarity": "☆5"
+  },
+  "DB04": {
+    "name": {
+      "jp": "ブリギッド",
+      "en": "Brigid",
+      "ch": "水灯心"
+    },
+    "rarity": "☆5"
+  },
+  "RB17": {
+    "name": {
+      "jp": "アランナ",
+      "en": "Alanna",
+      "ch": "阿兰娜"
+    },
+    "rarity": "☆5"
+  },
+  "BV27": {
+    "name": {
+      "jp": "グレースベアラー",
+      "en": "Gracebearer",
+      "ch": "聆音"
+    },
+    "rarity": "☆5"
+  },
+  "MEOW": {
+    "name": {
+      "jp": "ミス・クリスティーン",
+      "en": "Miss.Christine",
+      "ch": "Miss.Christine"
+    },
+    "rarity": "☆5"
+  },
+  "CB25": {
+    "name": {
+      "jp": "ティッピー",
+      "en": "Tippi",
+      "ch": "蒂比"
     },
     "rarity": "☆5"
   },
@@ -2655,6 +2751,14 @@
     },
     "rarity": "☆4"
   },
+  "YD22": {
+    "name": {
+      "jp": "ウィンドスクート",
+      "en": "Windscoot",
+      "ch": "骋风"
+    },
+    "rarity": "☆4"
+  },
   "PA11": {
     "name": {
       "jp": "フェン",
@@ -2892,6 +2996,14 @@
       "jp": "PhonoR-0",
       "en": "PhonoR-0",
       "ch": "PhonoR-0"
+    },
+    "rarity": "☆1"
+  },
+  "LT47": {
+    "name": {
+      "jp": "CONFESS-47",
+      "en": "CONFESS-47",
+      "ch": "CONFESS-47"
     },
     "rarity": "☆1"
   }
