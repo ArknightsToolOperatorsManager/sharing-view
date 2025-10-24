@@ -833,7 +833,7 @@
   },
   "NM06": {
     "name": {
-      "jp": "ユウ",
+      "jp": "ユー",
       "en": "Yu",
       "ch": "余"
     },
@@ -841,7 +841,7 @@
   },
   "REX1": {
     "name": {
-      "jp": "ジュウホァン",
+      "jp": "熾炎ブレイズ",
       "en": "Blaze I.S.",
       "ch": "烛煌"
     },
@@ -889,7 +889,7 @@
   },
   "LT32": {
     "name": {
-      "jp": "サンクタミキサー",
+      "jp": "サンクタ・ミキサー",
       "en": "Sankta Miksaparato",
       "ch": "信仰搅拌机"
     },
@@ -900,6 +900,54 @@
       "jp": "トラゴディア",
       "en": "Tragodia",
       "ch": "酒神"
+    },
+    "rarity": "☆6"
+  },
+  "YD25": {
+    "name": {
+      "jp": "司霆レイズ",
+      "en": "Leizi T.T.",
+      "ch": "司霆惊蛰"
+    },
+    "rarity": "☆6"
+  },
+  "RE10": {
+    "name": {
+      "jp": "レイディアン",
+      "en": "Raidian",
+      "ch": "电弧"
+    },
+    "rarity": "☆6"
+  },
+  "LM23": {
+    "name": {
+      "jp": "斬業ホシグマ",
+      "en": "Hoshiguma T.B.",
+      "ch": "斩业星熊"
+    },
+    "rarity": "☆6"
+  },
+  "HK15": {
+    "name": {
+      "jp": "ハルカ",
+      "en": "Haruka",
+      "ch": "遥"
+    },
+    "rarity": "☆6"
+  },
+  "AM01": {
+    "name": {
+      "jp": "豊川祥子",
+      "en": "Sakiko Togawa",
+      "ch": "丰川祥子"
+    },
+    "rarity": "☆6"
+  },
+  "RE06": {
+    "name": {
+      "jp": "マントラ",
+      "en": "Mantra",
+      "ch": "真言"
     },
     "rarity": "☆6"
   },
@@ -1489,7 +1537,7 @@
   },
   "SG08": {
     "name": {
-      "jp": "トゥイェ",
+      "jp": "トゥイエ",
       "en": "Tuye",
       "ch": "图耶"
     },
@@ -2217,7 +2265,7 @@
   },
   "YD18": {
     "name": {
-      "jp": "シンジュウ",
+      "jp": "シィンズゥ",
       "en": "Xingzhu",
       "ch": "行箸"
     },
@@ -2284,6 +2332,70 @@
       "jp": "ティッピー",
       "en": "Tippi",
       "ch": "蒂比"
+    },
+    "rarity": "☆5"
+  },
+  "YD26": {
+    "name": {
+      "jp": "レコードキーパー",
+      "en": "Record Keeper",
+      "ch": "录武官"
+    },
+    "rarity": "☆5"
+  },
+  "HK16": {
+    "name": {
+      "jp": "キチセイ",
+      "en": "Kichisei",
+      "ch": "吉星"
+    },
+    "rarity": "☆5"
+  },
+  "HK17": {
+    "name": {
+      "jp": "マツキリ",
+      "en": "Matsukiri",
+      "ch": "松桐"
+    },
+    "rarity": "☆5"
+  },
+  "AM02": {
+    "name": {
+      "jp": "八幡海鈴",
+      "en": "Umiri Yahata",
+      "ch": "八幡海铃"
+    },
+    "rarity": "☆5"
+  },
+  "AM03": {
+    "name": {
+      "jp": "三角初華",
+      "en": "Uika Misumi",
+      "ch": "三角初华"
+    },
+    "rarity": "☆5"
+  },
+  "AM04": {
+    "name": {
+      "jp": "祐天寺にゃむ",
+      "en": "Nyamu Yutenji",
+      "ch": "祐天寺若麦"
+    },
+    "rarity": "☆5"
+  },
+  "AM05": {
+    "name": {
+      "jp": "若葉睦",
+      "en": "Mutsumi Wakaba",
+      "ch": "若叶睦"
+    },
+    "rarity": "☆5"
+  },
+  "US35": {
+    "name": {
+      "jp": "ヴェトチキ",
+      "en": "Vyetochki",
+      "ch": "折桠"
     },
     "rarity": "☆5"
   },
@@ -2756,6 +2868,14 @@
       "jp": "ウィンドスクート",
       "en": "Windscoot",
       "ch": "骋风"
+    },
+    "rarity": "☆4"
+  },
+  "US38": {
+    "name": {
+      "jp": "スネグラーチカ",
+      "en": "Snegurochka",
+      "ch": "冬时"
     },
     "rarity": "☆4"
   },
